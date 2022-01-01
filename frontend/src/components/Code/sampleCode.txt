@@ -1,0 +1,128 @@
+# Standard Data Manipulation Libraries
+import pandas as pd
+import numpy as np
+from pathlib import Path
+import os
+path = Path('../input/prediction-of-music-genre')
+
+# Profile Report and Statistical analysis 
+from pandas_profiling import profile_report
+
+# Preprocessing Data Libraries
+from sklearn.preprocessing import LabelEncoder
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import label_binarize
+from sklearn.preprocessing import StandardScaler
+
+# Data Splitting Libraries
+from sklearn.model_selection import train_test_split
+from sklearn.model_selection import StratifiedKFold, KFold
+
+# Performance Metrics Libraries
+from sklearn.metrics import confusion_matrix, accuracy_score
+from sklearn.metrics import roc_curve, classification_report
+
+# Models
+from sklearn.linear_model import LogisticRegression
+from sklearn.naive_bayes import GaussianNB
+from xgboost import XGBClassifier
+from lightgbm import LGBMClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC
+from mlxtend.classifier import StackingCVClassifier
+
+# Plotting
+import plotly.express as px
+import plotly.graph_objects as go
+from plotly.offline import plot, iplot, init_notebook_mode
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set_style('darkgrid')  # sets the background of plots to a darkgrid
+plt.rcParams['figure.figsize'] = [12.0, 8.0] # Defaults the size of the figures to specified value
+
+dataframe = pd.read_csv(path / 'music_genre.csv')
+
+print(f'Number of Columns in the Dataset : {len(dataframe.columns)}')
+
+
+col_df = {}
+for col in dataframe.columns:
+    col_df[col] = dataframe[col].dtype
+pd.DataFrame(col_df.items(), columns = ['Column Name', 'Data Type']).head(18)
+
+genre_names = [col for col in dataframe['music_genre'].unique() if type(col)!=float]
+
+# Training with all columns included
+X = train.drop(columns = ['music_genre'])
+Y = train['music_genre'].values
+
+temp_X = train.drop(columns = ['tempo', 'duration_ms', 'music_genre'])
+temp_Y = train['music_genre'].values
+
+from sklearn.model_selection import train_test_split
+xtrain, xtest, ytrain, ytest = train_test_split(X, Y, test_size = 0.2, random_state = 786)
+
+for ds in [xtrain, xtest, ytrain, ytest]:
+    print(f'Shape : {ds.shape}')
+
+model3 = 'Random Forest Classifer'
+rf = RandomForestClassifier(n_estimators = 20, random_state = 2, max_depth = 5)
+rf.fit(xtrain,ytrain)
+ypred = rf.predict(xtest)
+rf_cm = confusion_matrix(ytest, ypred)
+rf_acc = accuracy_score(ytest, ypred)
+print("confussion matrix")
+print(rf_cm)
+print("\n")
+print(f"Accuracy of {model3} : {rf_acc*100}\n")
+print(classification_report(ytest,ypred))
+
+model4 = 'K Neighbors Classifier'
+knn = KNeighborsClassifier(n_neighbors = 10)
+knn.fit(xtrain, ytrain)
+ypred = knn.predict(xtest)
+knn_cm = confusion_matrix(ytest, ypred)
+knn_acc = accuracy_score(ytest, ypred)
+print('Confusion Matrix')
+print(knn_cm)
+print('\n')
+print(f'Accuracy of {model4} : {knn_acc * 100} \n')
+print(classification_report(ytest, ypred))
+
+model5 = 'DecisionTreeClassifier'
+dt = DecisionTreeClassifier(criterion = 'entropy', random_state = 0, max_depth = 6)
+dt.fit(xtrain, ytrain)
+ypred = dt.predict(xtest)
+dt_cm = confusion_matrix(ytest, ypred)
+dt_acc = accuracy_score(ytest, ypred)
+print('Confusion Matrix')
+print(dt_cm)
+print('\n')
+print(f'Accuracy of {model5} : {dt_acc * 100} \n')
+print(classification_report(ytest, ypred))
+
+model6 = 'Support Vector Classifier'
+svc = SVC(kernel = 'rbf', C = 2)
+svc.fit(xtrain, ytrain)
+ypred = svc.predict(xtest)
+svc_cm = confusion_matrix(ytest, ypred)
+svc_acc = accuracy_score(ytest, ypred)
+print('Confusion Matrix')
+print(svc_cm)
+print('\n')
+print(f'Accuracy of {model6} : {svc_acc * 100} \n')
+print(classification_report(ytest, ypred))
+
+model7 = 'Extreme Gradient Boosting'
+xgb = XGBClassifier()
+xgb.fit(xtrain, ytrain)
+ypred = xgb.predict(xtest)
+xgb_cm = confusion_matrix(ytest, ypred)
+xgb_acc = accuracy_score(ytest, ypred)
+print('Confusion Matrix')
+print(xgb_cm)
+print('\n')
+print(f'Accuracy of {model7} : {xgb_acc * 100} \n')
+print(classification_report(ytest, ypred))
