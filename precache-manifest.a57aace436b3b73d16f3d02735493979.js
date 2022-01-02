@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f1ce79f7f558b33ed97a5e96c0c3332c",
+    "revision": "8ceec169bc7e80e0360ddfdb9db82416",
     "url": "/EquityTrackr/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/EquityTrackr/static/css/5.af2598c0.chunk.css"
   },
   {
-    "revision": "c4e130fd3811aa0536a8",
-    "url": "/EquityTrackr/static/css/main.c7775633.chunk.css"
+    "revision": "572635e3a49a82cbbfaa",
+    "url": "/EquityTrackr/static/css/main.8b195b65.chunk.css"
   },
   {
     "revision": "c897d56b87f41f850d01",
@@ -92,8 +92,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/EquityTrackr/static/js/7.30fa8a89.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "5de3783426e0fb2ef48e",
-    "url": "/EquityTrackr/static/js/8.d7812d94.chunk.js"
+    "revision": "c56f1e98e67521c0038e",
+    "url": "/EquityTrackr/static/js/8.83ff61c6.chunk.js"
   },
   {
     "revision": "1d690ddc353bf7eb0367",
@@ -104,12 +104,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/EquityTrackr/static/js/9.b4775b2b.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "c4e130fd3811aa0536a8",
+    "revision": "572635e3a49a82cbbfaa",
     "url": "/EquityTrackr/static/js/main.dc46b12f.chunk.js"
   },
   {
-    "revision": "439fc211e5d6ddffe82c",
-    "url": "/EquityTrackr/static/js/runtime-main.8edc2033.js"
+    "revision": "725cc70285f5b38f80fe",
+    "url": "/EquityTrackr/static/js/runtime-main.5e70d4b0.js"
   },
   {
     "revision": "b9c73089fd14dcb97bf597665f575ac1",
