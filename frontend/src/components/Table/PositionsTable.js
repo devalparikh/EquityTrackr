@@ -15,7 +15,7 @@ import {
 import SectionTitle from "../Typography/SectionTitle";
 import { currencyFormat } from "../../utils/textFormat";
 
-function PositionsTable({ columns, data }) {
+function PositionsTable({ data }) {
   return (
     <>
       <SectionTitle>My Positions (x{data.length})</SectionTitle>
@@ -23,9 +23,8 @@ function PositionsTable({ columns, data }) {
         <Table>
           <TableHeader>
             <tr>
-              {columns.map((column) => {
-                return <TableCell>{column}</TableCell>;
-              })}
+              <TableCell>Name</TableCell>
+              <TableCell className="text-right">Market Value</TableCell>
             </tr>
           </TableHeader>
           <TableBody>

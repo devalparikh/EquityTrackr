@@ -102,7 +102,7 @@ function Dashboard() {
         </ChartCard>
       </div>
 
-      <PositionsTable data={positions} columns={["Name", "Marekt Value"]} />
+      <PositionsTable data={positions} />
     </>
   ) : (
     <></>
