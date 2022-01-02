@@ -2,8 +2,8 @@
   "name": "EquityTrackr",
   "version": "0.4.0",
   "description": "A multi theme, completely accessible, with components and pages examples, (almost) ready for production dashboard.",
-  "private": true,
-  "homepage": "https://devalparikh.github.io/EquityTrackr/",
+  "private": false,
+  "homepage": "https://devalparikh.github.io/EquityTrackr",
   "proxy": "http://localhost:3000",
   "scripts": {
     "tailwind:dev": "tailwindcss build src/assets/css/tailwind.css -o src/assets/css/tailwind.output.css",

@@ -17,7 +17,7 @@ import { currencyFormat } from "../../utils/textFormat";
 
 function PositionsTable({ columns, data }) {
   return (
-    <div className="mb-10">
+    <>
       <SectionTitle>My Positions (x{data.length})</SectionTitle>
       <TableContainer>
         <Table>
@@ -59,7 +59,7 @@ function PositionsTable({ columns, data }) {
           </TableBody>
         </Table>
       </TableContainer>
-    </div>
+    </>
   );
 }
 export default PositionsTable;
