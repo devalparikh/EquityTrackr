@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8ceec169bc7e80e0360ddfdb9db82416",
+    "revision": "76f48200467c336132c645297c44a617",
     "url": "/EquityTrackr/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/EquityTrackr/static/css/5.af2598c0.chunk.css"
   },
   {
-    "revision": "572635e3a49a82cbbfaa",
-    "url": "/EquityTrackr/static/css/main.8b195b65.chunk.css"
+    "revision": "437f041d10b94dbce0db",
+    "url": "/EquityTrackr/static/css/main.ac5736e8.chunk.css"
   },
   {
     "revision": "c897d56b87f41f850d01",
@@ -60,8 +60,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/EquityTrackr/static/js/18.5fd2384e.chunk.js"
   },
   {
-    "revision": "92b7543148162c5c58fd",
-    "url": "/EquityTrackr/static/js/19.95de9bdf.chunk.js"
+    "revision": "869300f84c442c44cdaf",
+    "url": "/EquityTrackr/static/js/19.08f03838.chunk.js"
   },
   {
     "revision": "a9a095594e7dece30235",
@@ -92,8 +92,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/EquityTrackr/static/js/7.30fa8a89.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "c56f1e98e67521c0038e",
-    "url": "/EquityTrackr/static/js/8.83ff61c6.chunk.js"
+    "revision": "6e468fa7d3d24360a1b5",
+    "url": "/EquityTrackr/static/js/8.fc249637.chunk.js"
   },
   {
     "revision": "1d690ddc353bf7eb0367",
@@ -104,12 +104,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/EquityTrackr/static/js/9.b4775b2b.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "572635e3a49a82cbbfaa",
+    "revision": "437f041d10b94dbce0db",
     "url": "/EquityTrackr/static/js/main.dc46b12f.chunk.js"
   },
   {
-    "revision": "725cc70285f5b38f80fe",
-    "url": "/EquityTrackr/static/js/runtime-main.5e70d4b0.js"
+    "revision": "ba5784c99847bce848ef",
+    "url": "/EquityTrackr/static/js/runtime-main.ebe27c24.js"
   },
   {
     "revision": "b9c73089fd14dcb97bf597665f575ac1",
