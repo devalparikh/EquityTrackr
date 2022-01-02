@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "79272e58901ba8d7ad5ea4ba31ff7f69",
+    "revision": "f1ce79f7f558b33ed97a5e96c0c3332c",
     "url": "/EquityTrackr/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/EquityTrackr/static/css/5.af2598c0.chunk.css"
   },
   {
-    "revision": "42c033ef31960eeeb8eb",
+    "revision": "c4e130fd3811aa0536a8",
     "url": "/EquityTrackr/static/css/main.c7775633.chunk.css"
   },
   {
@@ -104,8 +104,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/EquityTrackr/static/js/9.b4775b2b.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "42c033ef31960eeeb8eb",
-    "url": "/EquityTrackr/static/js/main.ee8a34d3.chunk.js"
+    "revision": "c4e130fd3811aa0536a8",
+    "url": "/EquityTrackr/static/js/main.dc46b12f.chunk.js"
   },
   {
     "revision": "439fc211e5d6ddffe82c",
