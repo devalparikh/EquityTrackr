@@ -7,6 +7,7 @@ import (
 
 	"github.com/gorilla/mux"
 
+	"github.com/devalparikh/EquityTrackr/server/internal/datastore"
 	"github.com/devalparikh/EquityTrackr/server/internal/investor"
 )
 
@@ -24,5 +25,10 @@ func handleRequest() {
 }
 
 func main() {
+	dbConnection := datastore.Run()
+	datastore.Get(dbConnection, "investors")
+
 	handleRequest()
+
+	defer dbConnection.Client.Close()
 }
