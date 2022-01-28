@@ -4,28 +4,48 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+
+	"github.com/gorilla/mux"
+
+	"github.com/devalparikh/EquityTrackr/server/internal/datastore"
 )
 
+type DBConnection = datastore.DBConnection
+
 type investor struct {
-	ID     string  `json:"id"`
-	Title  string  `json:"title"`
-	Artist string  `json:"artist"`
-	Price  float64 `json:"price"`
+	Name    string  `json:"name"`
+	Balance float64 `json:"balance"`
 }
 
-type invesetors []investor
+type investors []investor
 
-func GetAllArticles(w http.ResponseWriter, r *http.Request) {
-	invesetors := invesetors{
-		{ID: "1", Title: "Blue Train", Artist: "John Coltrane", Price: 56.99},
-		{ID: "2", Title: "Jeru", Artist: "Gerry Mulligan", Price: 17.99},
-		{ID: "3", Title: "Sarah Vaughan and Clifford Brown", Artist: "Sarah Vaughan", Price: 39.99},
+func GetAllInvestors(w http.ResponseWriter, r *http.Request) {
+	investors := investors{
+		{Name: "Deval", Balance: 11229.90},
+		{Name: "Bob", Balance: 12319.90},
 	}
-
-	fmt.Println("Endpoint Hit: All invesetors endpoint")
-	json.NewEncoder(w).Encode(invesetors)
+	json.NewEncoder(w).Encode(investors)
 }
 
-func PostAllArticles(w http.ResponseWriter, r *http.Request) {
+func GetInvestorByName(dbConnection DBConnection) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		vars := mux.Vars(r)
+
+		collectionName := "investors"
+		investorName := vars["name"]
+
+		investor, err := datastore.GetOne(dbConnection, collectionName, investorName)
+
+		if err != nil {
+			errorMessage := fmt.Sprintf("Error recieved while fetching from firebase: %v", err)
+			http.Error(w, errorMessage, http.StatusInternalServerError)
+		} else {
+			json.NewEncoder(w).Encode(investor)
+		}
+
+	}
+}
+
+func PostAllInvestors(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Test POST endpoint worked")
 }

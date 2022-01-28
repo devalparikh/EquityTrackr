@@ -11,12 +11,12 @@ import (
 	"google.golang.org/api/option"
 )
 
-type dbConnection struct {
+type DBConnection struct {
 	Client *firestore.Client
 	Ctx    context.Context
 }
 
-func Run() dbConnection {
+func Run() DBConnection {
 	// Use a service account
 	ctx := context.Background()
 	sa := option.WithCredentialsFile("/Users/devalparikh/Documents/Development/Github/EquityTrackr/server/equitytrackr-firebase-adminsdk-m70x2-91950eaf42.json")
@@ -29,11 +29,11 @@ func Run() dbConnection {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	dbConnection := dbConnection{Client: client, Ctx: ctx}
+	dbConnection := DBConnection{Client: client, Ctx: ctx}
 	return dbConnection
 }
 
-func Get(dbConnection dbConnection, collectionName string) {
+func Get(dbConnection DBConnection, collectionName string) {
 
 	fmt.Printf("fetching collection %v...\n", collectionName)
 
@@ -48,6 +48,19 @@ func Get(dbConnection dbConnection, collectionName string) {
 		}
 		fmt.Println(doc.Data())
 	}
+}
+
+func GetOne(dbConnection DBConnection, collectionName string, document string) (map[string]interface{}, error) {
+
+	fmt.Printf("fetching collection %v...\n", collectionName)
+
+	dsnap, err := dbConnection.Client.Collection(collectionName).Doc(document).Get(dbConnection.Ctx)
+	if err != nil {
+		return nil, err
+	}
+	m := dsnap.Data()
+	fmt.Printf("Document data: %#v\n", m)
+	return m, nil
 }
 
 // func Add(collection string, payload string) {
