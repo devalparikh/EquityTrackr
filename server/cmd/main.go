@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
+	"github.com/rs/cors"
 
 	"github.com/devalparikh/EquityTrackr/server/internal/datastore"
 	"github.com/devalparikh/EquityTrackr/server/internal/investor"
@@ -23,7 +24,15 @@ func handleRequest(dbConnection DBConnection) {
 	myRouter.HandleFunc("/investors", investor.GetAllInvestors).Methods("GET")
 	myRouter.HandleFunc("/investors/{name}", investor.GetInvestorByName(dbConnection)).Methods("GET")
 	myRouter.HandleFunc("/investors", investor.PostAllInvestors).Methods("POST")
-	log.Fatal(http.ListenAndServe(":8080", myRouter))
+
+	c := cors.New(cors.Options{
+		AllowedOrigins:   []string{"*"},
+		AllowCredentials: true,
+	})
+
+	handler := c.Handler(myRouter)
+
+	log.Fatal(http.ListenAndServe(":8080", handler))
 }
 
 func main() {

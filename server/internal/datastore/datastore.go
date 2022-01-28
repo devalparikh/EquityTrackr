@@ -52,14 +52,17 @@ func Get(dbConnection DBConnection, collectionName string) {
 
 func GetOne(dbConnection DBConnection, collectionName string, document string) (map[string]interface{}, error) {
 
-	fmt.Printf("fetching collection %v...\n", collectionName)
+	fmt.Printf("fetching collection %v for document %v...\n", collectionName, document)
 
 	dsnap, err := dbConnection.Client.Collection(collectionName).Doc(document).Get(dbConnection.Ctx)
 	if err != nil {
+		fmt.Printf("error trying to find %v! \n", document)
 		return nil, err
 	}
 	m := dsnap.Data()
 	fmt.Printf("Document data: %#v\n", m)
+	fmt.Printf("found %v! \n", document)
+
 	return m, nil
 }
 

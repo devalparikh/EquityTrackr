@@ -25,9 +25,14 @@ function Dashboard() {
   const [userData, setUserData] = useState([]);
 
   useEffect(() => {
+    const loggedInUsername = localStorage.getItem("temp_username");
+
     axios
-      .get("http://localhost:8080/api/v1/investor?name=Deval")
+      // .get("http://localhost:8080/api/v1/investor?name=Deval")
+      .get(`http://localhost:8080/investors/${loggedInUsername}`)
+
       .then((response) => {
+        console.log(response);
         setUserData(response.data);
       })
       .catch((err) => {
@@ -48,9 +53,9 @@ function Dashboard() {
     );
   }, [page]);
 
-  return userData.name ? (
+  return userData.username ? (
     <>
-      <PageTitle>Weclome, {userData.name}</PageTitle>
+      <PageTitle>Weclome, {userData.username}</PageTitle>
 
       {/* <!-- Cards --> */}
       <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">

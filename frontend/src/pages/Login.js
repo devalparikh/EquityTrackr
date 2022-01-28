@@ -1,12 +1,34 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from "react";
+import axios from "axios";
 
-import ImageLight from '../assets/img/login-office.jpeg'
-import ImageDark from '../assets/img/login-office-dark.jpeg'
-import { GithubIcon, TwitterIcon } from '../icons'
-import { Label, Input, Button } from '@windmill/react-ui'
+import { Link } from "react-router-dom";
+
+import ImageLight from "../assets/img/login-office.jpeg";
+import ImageDark from "../assets/img/login-office-dark.jpeg";
+import { GithubIcon, TwitterIcon } from "../icons";
+import { Label, Input, Button } from "@windmill/react-ui";
 
 function Login() {
+  const [username, setUsername] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(username);
+    axios
+      // .get("http://localhost:8080/api/v1/investor?name=Deval")
+      .get(`http://localhost:8080/investors/${username}`)
+
+      .then((res) => {
+        console.log(res);
+        localStorage.setItem("temp_username", username);
+        window.location.href = "/app";
+      })
+      .catch((err) => {
+        console.log(err);
+        localStorage.removeItem("temp_username");
+      });
+  };
+
   return (
     <div className="flex items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
       <div className="flex-1 h-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800">
@@ -27,18 +49,40 @@ function Login() {
           </div>
           <main className="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
             <div className="w-full">
-              <h1 className="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200">Login</h1>
-              <Label>
+              <h1 className="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200">
+                Login
+              </h1>
+              {/* <Label>
                 <span>Email</span>
                 <Input className="mt-1" type="email" placeholder="john@doe.com" />
+              </Label> */}
+              <Label>
+                <span>Username</span>
+                <Input
+                  className="mt-1"
+                  type="username"
+                  placeholder="johndoe"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
               </Label>
 
               <Label className="mt-4">
                 <span>Password</span>
-                <Input className="mt-1" type="password" placeholder="***************" />
+                <Input
+                  className="mt-1"
+                  type="password"
+                  placeholder="***************"
+                />
               </Label>
 
-              <Button className="mt-4" block tag={Link} to="/app">
+              <Button
+                className="mt-4"
+                block
+                tag={Link}
+                to="/app"
+                onClick={handleSubmit}
+              >
                 Log in
               </Button>
 
@@ -74,7 +118,7 @@ function Login() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;
